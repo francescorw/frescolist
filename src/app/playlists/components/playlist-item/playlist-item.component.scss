@@ -1,0 +1,29 @@
+:host {
+  display: block;
+  margin: 4px 8px;
+
+  .list-item {
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 200ms ease;
+
+    &:hover {
+      background: var(--mat-sys-outline);
+    }
+
+    img {
+      border-radius: 4px;
+      margin-right: 16px;
+    }
+
+    h6 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+
+  ::ng-deep .mat-mdc-list-item-unscoped-content {
+    width: 100%;
+  }
+}

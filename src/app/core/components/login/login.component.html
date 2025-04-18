@@ -1,0 +1,51 @@
+<div class="container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>Welcome to Frescolist</mat-card-title>
+      <mat-card-subtitle>Transform text into Spotify playlists</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="features">
+        <div class="feature">
+          <mat-icon>format_list_bulleted</mat-icon>
+          <div class="feature-text">
+            <h3>Easy Import</h3>
+            <p>Create Spotify playlists from text files or AI-generated song lists</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <mat-icon>edit_note</mat-icon>
+          <div class="feature-text">
+            <h3>Simple Editing</h3>
+            <p>Edit your playlists using a simple text format: "Artist - Song"</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <mat-icon>sync</mat-icon>
+          <div class="feature-text">
+            <h3>Instant Sync</h3>
+            <p>Changes are immediately synced to your Spotify account</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <h4>Example Format:</h4>
+        <pre>
+The Beatles - Hey Jude
+Queen - Bohemian Rhapsody
+Pink Floyd - Wish You Were Here</pre>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-fab extended color="primary" (click)="onLoginButtonClick()">
+        <mat-icon>login</mat-icon>
+        Connect with Spotify
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

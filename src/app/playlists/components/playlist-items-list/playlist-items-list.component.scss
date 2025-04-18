@@ -1,0 +1,14 @@
+.playlist-list-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  mat-list {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .paginator {
+    flex: 0 0 auto;
+  }
+}

@@ -1,0 +1,122 @@
+:host {
+  display: block;
+  height: 100%;
+  overflow: auto;
+}
+
+.container {
+  display: flex;
+  min-height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--mat-toolbar-container-background-color);
+  box-sizing: border-box;
+}
+
+.login-card {
+  max-width: 600px;
+  width: 100%;
+
+  mat-card-header {
+    margin-bottom: 24px;
+    text-align: center;
+
+    mat-card-title {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    mat-card-subtitle {
+      font-size: 16px;
+    }
+  }
+
+  mat-card-content {
+    padding: 0 24px;
+  }
+
+  .features {
+    display: grid;
+    gap: 24px;
+    margin-bottom: 32px;
+
+    .feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+
+      mat-icon {
+        color: var(--mat-primary-color);
+        width: 24px;
+        height: 24px;
+        padding: 12px;
+        border-radius: 50%;
+        background: var(--mat-primary-color-lighter);
+      }
+
+      .feature-text {
+        h3 {
+          margin: 0 0 8px 0;
+          font-size: 18px;
+          font-weight: 500;
+        }
+
+        p {
+          margin: 0;
+          color: var(--mat-form-field-label-text-color);
+        }
+      }
+    }
+  }
+
+  .example {
+    background: var(--mat-toolbar-container-background-color);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+
+    h4 {
+      margin: 0 0 12px 0;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    pre {
+      margin: 0;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--mat-form-field-label-text-color);
+    }
+  }
+
+  mat-card-actions {
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+
+    button {
+      font-size: 16px;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 600px) {
+  .container {
+    padding: 16px;
+  }
+
+  .login-card {
+    mat-card-header {
+      mat-card-title {
+        font-size: 24px;
+      }
+    }
+
+    .features {
+      gap: 16px;
+    }
+  }
+}

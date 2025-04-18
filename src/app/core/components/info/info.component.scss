@@ -1,0 +1,48 @@
+:host {
+  display: block;
+  height: 100%;
+  overflow: auto;
+}
+
+mat-card {
+  mat-card-header {
+    margin-bottom: 24px;
+  }
+
+  section {
+    margin-bottom: 32px;
+
+    h3 {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 16px;
+      color: var(--mat-primary-text-color);
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0;
+      color: var(--mat-secondary-text-color);
+    }
+
+    a {
+      color: var(--mat-primary-color);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .status-badge {
+    display: inline-block;
+    background: var(--mat-primary-color);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+}

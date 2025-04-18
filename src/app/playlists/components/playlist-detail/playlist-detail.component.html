@@ -1,0 +1,33 @@
+<mat-card class="playlist-form-card">
+  <mat-card-header>
+    @if (!playlistId) {
+    <h3>Add a playlist</h3>
+    }
+    @if (playlistId) {
+    <h3>Edit playlist</h3>
+    }
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="playlistForm" class="playlist-form">
+      <div class="form-row title-row">
+        <mat-form-field>
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="title" [readonly]="!!playlistId" />
+        </mat-form-field>
+      </div>
+      <div class="form-row content-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Playlist content</mat-label>
+          <textarea class="playlist-text-content" matInput formControlName="content" cdkTextareaAutosize
+            [cdkAutosizeMinRows]="15" [cdkAutosizeMaxRows]="30"
+            placeholder="One song per line, format: Artist - Title"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="form-actions">
+        <button type="submit" mat-flat-button color="primary" [disabled]="!playlistForm.valid" (click)="save()">
+          Save playlist
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

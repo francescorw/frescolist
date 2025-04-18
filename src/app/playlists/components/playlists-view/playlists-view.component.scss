@@ -1,0 +1,10 @@
+.playlists-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--mat-card-background-color);
+
+  frescolist-playlists-toolbar {
+    flex: 0 0 auto;
+  }
+}

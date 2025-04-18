@@ -1,0 +1,6 @@
+<div class="playlists-container">
+  <frescolist-playlists-toolbar></frescolist-playlists-toolbar>
+  <mat-divider></mat-divider>
+  <frescolist-playlist-items-list [pages$]="playlistItems$" (pageNeeded)="playlistPageNeeded($event)">
+  </frescolist-playlist-items-list>
+</div>

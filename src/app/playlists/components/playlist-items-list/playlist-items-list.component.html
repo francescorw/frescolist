@@ -1,0 +1,12 @@
+<div class="playlist-list-container">
+  <mat-list>
+    @for (item of currentPage?.currentPageItems; track item) {
+    <frescolist-playlist-item [title]="item.title" [iconSrc]="item.iconSrc"
+      (click)="navigateToPlaylist(item.id, item.title)">
+    </frescolist-playlist-item>
+    }
+  </mat-list>
+  <mat-paginator class="paginator" (page)="pageChangedEvent($event)" [length]="currentPage?.totalItems"
+    [pageIndex]="page" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions">
+  </mat-paginator>
+</div>

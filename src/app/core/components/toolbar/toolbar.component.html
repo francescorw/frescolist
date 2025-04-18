@@ -1,0 +1,14 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button onclick="this.blur()" mat-icon-button class="example-icon" aria-label="Menu" (click)="menuButtonClicked()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="menu-spacer"></span>
+    <div>
+      <a routerLink="." color="primary" mat-fab extended aria-label="Frescolist">
+        <mat-icon class="icon-display" svgIcon="frescolist:logo"></mat-icon>
+        {{ appName }}
+      </a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
