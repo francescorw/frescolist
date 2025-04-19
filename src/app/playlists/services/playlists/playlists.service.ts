@@ -22,7 +22,8 @@ export class PlaylistsService {
         currentPageItems: p.items.map(item => ({
           id: item.id,
           title: item.name,
-          iconSrc: item.images[0]?.url
+          iconSrc: item.images[0]?.url,
+          isLocked: item.owner.id !== this.spotifyService.userProfile?.id && item.collaborative === false
         })),
         totalItems: p.total,
         pageSize: p.items.length as MaxInt<50>,
@@ -31,7 +32,7 @@ export class PlaylistsService {
     );
   }
 
-  getPlaylistDetails(playlistId: string): Observable<{ id: string; title: string; content: string }> {
+  getPlaylistDetails(playlistId: string): Observable<{ id: string; title: string; content: string, isLocked: boolean }> {
     if (this.spotifyService.spotifyApi === null) {
       throw new Error('No Spotify API instance available');
     }
@@ -39,7 +40,7 @@ export class PlaylistsService {
     const api = this.spotifyService.spotifyApi;
 
     return from(api.playlists.getPlaylist(playlistId)).pipe(
-      map(({ id, name, tracks }) => {
+      map(({ id, name, tracks, owner, collaborative }) => {
         const content = tracks.items
           .map(item => {
             const track = item.track;
@@ -51,7 +52,8 @@ export class PlaylistsService {
         return {
           id: id,
           title: name,
-          content
+          content,
+          isLocked: owner.id !== this.spotifyService.userProfile?.id && collaborative === false
         };
       })
     );
@@ -72,7 +74,8 @@ export class PlaylistsService {
     ).pipe(
       map(createdPlaylist => ({
         id: createdPlaylist.playlist.id,
-        title: createdPlaylist.playlist.name
+        title: createdPlaylist.playlist.name,
+        isLocked: false
       }))
     );
   }
@@ -91,7 +94,8 @@ export class PlaylistsService {
     ).pipe(
       map(({ playlist }) => ({
         id: playlist.id,
-        title: playlist.name
+        title: playlist.name,
+        isLocked: false
       }))
     );
   }
@@ -101,6 +105,7 @@ export type PersistedPlaylistModel = {
   id: string;
   title: string;
   iconSrc?: string;
+  isLocked: boolean
 }
 
 export type PlaylistsPage = FilledPage<PersistedPlaylistModel>;

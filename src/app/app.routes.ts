@@ -16,6 +16,7 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'info', component: InfoComponent },
     { path: '', component: LoginComponent },
+    { path: 'not-found', component: NotFoundComponent },
     { path: '**', component: NotFoundComponent }
   ]];
 

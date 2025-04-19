@@ -3,12 +3,21 @@
   margin: 4px 8px;
 
   .list-item {
-    cursor: pointer;
     border-radius: 8px;
     transition: background-color 200ms ease;
 
-    &:hover {
-      background: var(--mat-sys-outline);
+    &:not(.locked) {
+      cursor: pointer;
+
+      &:hover {
+        background: var(--mat-sys-outline);
+      }
+    }
+
+    &.locked {
+      &:hover {
+        background: hsl(from var(--mat-sys-outline) h s calc(l - 15));
+      }
     }
 
     img {
@@ -20,6 +29,16 @@
       margin: 0;
       font-size: 16px;
       font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .lock-icon {
+        font-size: 16px;
+        width: 16px;
+        height: 16px;
+        color: var(--mat-form-field-label-text-color);
+      }
     }
   }
 

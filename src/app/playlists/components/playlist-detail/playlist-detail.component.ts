@@ -7,6 +7,7 @@ import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angula
 import { PlaylistsService } from '../../services/playlists/playlists.service';
 import { Router } from '@angular/router';
 import { TextFieldModule } from '@angular/cdk/text-field';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'frescolist-playlist-detail',
@@ -31,14 +32,21 @@ export class PlaylistDetailComponent implements OnInit {
     // Pre-fill the title if provided (for editing)
 
     if (this.playlistId) {
-      this.playlistsService.getPlaylistDetails(this.playlistId).subscribe(details => {
-        console.log('Playlist ID:', details.id);
-        console.log('Playlist Title:', details.title);
-        console.log('Playlist Content:\n', details.content);
-        if (details) {
-          this.playlistForm.patchValue({ title: details.title, content: details.content });
-        }
-      });
+      this.playlistsService.getPlaylistDetails(this.playlistId)
+        .pipe(
+          catchError(error => {
+            console.error('Error fetching playlist details:', error);
+            this.router.navigate(['/not-found']);
+            return [];
+          })
+        )
+        .subscribe(details => {
+          if (details && !details.isLocked) {
+            this.playlistForm.patchValue({ title: details.title, content: details.content });
+          } else if (details.isLocked) {
+            this.router.navigate(['/not-found']);
+          }
+        });
     }
   }
 

@@ -1,4 +1,9 @@
-<mat-list-item matRipple class="list-item">
+<mat-list-item matRipple class="list-item" [class.locked]="isLocked">
   <img matListItemAvatar [src]="iconSrc" />
-  <h6 matListItemTitle>{{ title }}</h6>
+  <h6 matListItemTitle>
+    {{ title }}
+    @if (isLocked) {
+    <mat-icon class="lock-icon">lock</mat-icon>
+    }
+  </h6>
 </mat-list-item>
