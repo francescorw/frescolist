@@ -1,35 +1,6 @@
 <mat-sidenav-container>
-  <mat-sidenav [(opened)]="isOpened" mode="over" (closed)="onSideNavClosed()">
+  <mat-sidenav [opened]="false" mode="over">
     <mat-nav-list>
-      @if (isAuthenticated) {
-      <a mat-list-item routerLink="/playlists">
-        <span class="entry">
-          <mat-icon>featured_play_list</mat-icon>
-          <span>Playlists</span>
-        </span>
-      </a>
-      <a mat-list-item routerLink="/settings">
-        <span class="entry">
-          <mat-icon>settings</mat-icon>
-          <span>Settings</span>
-        </span>
-      </a>
-      }
-      @else {
-      <a mat-list-item routerLink="/login">
-        <span class="entry">
-          <mat-icon>login</mat-icon>
-          <span>Login</span>
-        </span>
-      </a>
-      }
-
-      <a mat-list-item routerLink="/info">
-        <span class="entry">
-          <mat-icon>info</mat-icon>
-          <span>Info</span>
-        </span>
-      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

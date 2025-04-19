@@ -1,14 +1,27 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <button onclick="this.blur()" mat-icon-button class="example-icon" aria-label="Menu" (click)="menuButtonClicked()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span class="menu-spacer"></span>
     <div>
       <a routerLink="." color="primary" mat-fab extended aria-label="Frescolist">
         <mat-icon class="icon-display" svgIcon="frescolist:logo"></mat-icon>
         {{ appName }}
       </a>
     </div>
+    <span class="flex-spacer"></span>
+    @if (isAuthenticated) {
+    <button mat-icon-button routerLink="/playlists" matTooltip="Playlists">
+      <mat-icon>featured_play_list</mat-icon>
+    </button>
+    <button mat-icon-button routerLink="/settings" matTooltip="Settings">
+      <mat-icon>settings</mat-icon>
+    </button>
+    }
+    @else {
+    <button mat-icon-button routerLink="/login" matTooltip="Login">
+      <mat-icon>login</mat-icon>
+    </button>
+    }
+    <button mat-icon-button routerLink="/info" matTooltip="Info">
+      <mat-icon>info</mat-icon>
+    </button>
   </mat-toolbar-row>
 </mat-toolbar>
