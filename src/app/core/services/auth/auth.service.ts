@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { SpotifyApi, AuthorizationCodeWithPKCEStrategy } from '@spotify/web-api-ts-sdk';
 import { SpotifyService } from '../spotify/spotify.service';
 import { environment } from '../../../../environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,17 @@ export class AuthService {
     environment.spotifyScopes
   );
 
-  constructor(private spotifyService: SpotifyService) {
+  constructor(private spotifyService: SpotifyService, router: Router) {
+
+    // Check for access_denied error in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('error') === 'access_denied') {
+      localStorage.removeItem('spotify-sdk:verifier');
+      localStorage.removeItem('spotify-sdk:AuthorizationCodeWithPKCEStrategy:token');
+      router.navigate(['/login']);
+      return;
+    }
+
     if (localStorage.getItem('spotify-sdk:verifier') || localStorage.getItem('spotify-sdk:AuthorizationCodeWithPKCEStrategy:token')) {
       const spotify = new SpotifyApi(this.implicitGrantStrategy);
       spotify.currentUser.profile().then(profile => this.spotifyService.refreshUserProfile(profile));
