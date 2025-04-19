@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy:gh-pages": "ng deploy --cname=frescolist.frw.ai"
   },
   "private": true,
   "dependencies": {
