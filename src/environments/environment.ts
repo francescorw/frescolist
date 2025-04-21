@@ -3,7 +3,7 @@ import { environment as devEnvironment } from './environment.development';
 import { environment as prodEnvironment } from './environment.production';
 
 export const baseEnvironment = {
-  spotifyRedirectUri: `${window.location.protocol}//${window.location.host}`,
+  spotifyRedirectUri: `${window.location.protocol}//${window.location.host}/authenticate`,
   spotifyScopes: [
     'user-read-private',
     'user-read-email',

@@ -15,21 +15,17 @@ export class AuthService {
   );
 
   constructor(private spotifyService: SpotifyService, router: Router) {
-
-    // Check for access_denied error in URL
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('error') === 'access_denied') {
-      localStorage.removeItem('spotify-sdk:verifier');
-      localStorage.removeItem('spotify-sdk:AuthorizationCodeWithPKCEStrategy:token');
-      router.navigate(['/login']);
-      return;
-    }
-
-    if (localStorage.getItem('spotify-sdk:verifier') || localStorage.getItem('spotify-sdk:AuthorizationCodeWithPKCEStrategy:token')) {
+    if (localStorage.getItem('spotify-sdk:verifier') && window.location.pathname == '/authenticate' || localStorage.getItem('spotify-sdk:AuthorizationCodeWithPKCEStrategy:token')) {
       const spotify = new SpotifyApi(this.implicitGrantStrategy);
       spotify.currentUser.profile().then(profile => this.spotifyService.refreshUserProfile(profile));
 
       this.spotifyService.spotifyApi = spotify;
+    }
+    else {
+      localStorage.removeItem('spotify-sdk:verifier');
+      localStorage.removeItem('spotify-sdk:AuthorizationCodeWithPKCEStrategy:token');
+      router.navigate(['/login']);
+      return;
     }
   }
 

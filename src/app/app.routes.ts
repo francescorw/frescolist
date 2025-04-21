@@ -14,6 +14,7 @@ export const routes: Routes = [
     { ...getProtectedRoute(), path: 'settings', component: SettingsComponent },
     { ...getProtectedRoute(), path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'authenticate', component: LoginComponent },
     { path: 'info', component: InfoComponent },
     { path: '', component: LoginComponent },
     { path: 'not-found', component: NotFoundComponent },
