@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy:gh-pages": "ng deploy --cname=frescolist.frw.ai"
+    "deploy:gh-pages": "ng build && node build/deploy-to-gh-pages.js"
   },
   "private": true,
   "dependencies": {
@@ -31,7 +31,7 @@
     "@angular/cli": "^19.2.8",
     "@angular/compiler-cli": "^19.2.6",
     "@types/jasmine": "~5.1.0",
-    "angular-cli-ghpages": "^2.0.3",
+    "gh-pages": "^6.3.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
