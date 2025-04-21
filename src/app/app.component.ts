@@ -3,7 +3,7 @@ import { MatIconRegistry, MatIconModule } from '@angular/material/icon';
 import { SideNavComponent } from './core/components/side-nav/side-nav.component';
 import { ToolbarComponent } from './core/components/toolbar/toolbar.component';
 import { DomSanitizer } from '@angular/platform-browser';
-import { FRESCOLIST_LOGO } from './core/icons';
+import { ThemeService } from './core/services/theming/theme.service';
 
 @Component({
   selector: 'frescolist-root',
@@ -14,7 +14,7 @@ import { FRESCOLIST_LOGO } from './core/icons';
 export class AppComponent {
   title = 'frescolist';
 
-  constructor(matIconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
-    matIconRegistry.addSvgIconLiteralInNamespace('frescolist', 'logo', sanitizer.bypassSecurityTrustHtml(FRESCOLIST_LOGO));
+  constructor(themeService: ThemeService) {
+    themeService.restoreTheme();
   }
 }

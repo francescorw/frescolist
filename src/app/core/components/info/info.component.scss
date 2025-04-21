@@ -38,8 +38,8 @@ mat-card {
 
   .status-badge {
     display: inline-block;
-    background: var(--mat-primary-color);
-    color: white;
+    background: var(--mat-sys-on-secondary);
+    color: var(--mat-sys-inverse-on-secondary);
     padding: 4px 12px;
     border-radius: 16px;
     font-size: 14px;

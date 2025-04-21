@@ -16,3 +16,19 @@ section {
     font-weight: 500;
   }
 }
+
+.theme-section {
+  mat-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+mat-divider {
+  margin: 0 -24px;
+}
+
+.account-section {
+  margin-top: 24px;
+}
